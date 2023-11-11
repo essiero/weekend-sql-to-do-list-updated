@@ -1,17 +1,17 @@
 /* TO-DO
-- create database
-- connect server to database
+X create database
+X connect server to database
     - 
-- form for to-dos
-    - input fields for to-do
+X form for to-dos
+    X input fields for to-do
         - post route
         - post request
             - add form input to database
-        - get route
-        - get request
-            - render response.data to DOM
-                - clear table
-                - render database table to DOM
+        X get route
+        X get request
+            X render response.data to DOM
+                X clear list
+                X render database list to DOM
     - complete button
         - onclick attribute to preventDefault, completeTask()
         - completeTask(event) function
@@ -46,7 +46,7 @@ console.log('JS is sourced!');
 getTodos();
 
 // Get request
-function getTodos() {
+function getToDos() {
     axios({
         type: 'GET',
         url: '/todos'
@@ -57,7 +57,7 @@ console.log('Error in GET request', error)
     });
 };
 
-function renderTodos(todos) {
+function renderToDos(todos) {
     const taskList = document.getElementById('list');
     taskList.innerHTML = '';
     for (let item of todos){
@@ -65,3 +65,24 @@ function renderTodos(todos) {
         `<li>${item.text}</li>`
     }
 }
+
+function handleSubmit(event){
+    event.preventDefault();
+    // bundles to-do text input into object
+    let newTask = {};
+    newTask.text = document.getElementById('toDoText').value;
+    newTask.isComplete = false;
+// POST request for new to-do
+    axios({
+        method: 'POST',
+        url: '/list',
+        data: newTask
+    }).then((response) => {
+        console.log('New task:', response.data);
+        getToDos();
+    }).catch((error) => {
+        console.log('Error in POST', error);
+        alert('Unable to add task at this time. See console for more information.')
+    })
+}
+
