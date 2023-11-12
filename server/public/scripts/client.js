@@ -14,15 +14,15 @@ X form for to-dos
                 X render database list to DOM
     X complete button
         X onclick attribute to preventDefault, completeTask()
-        - markAsComplete(event) function
-            - add completed class
-            - edit CSS for .complete to strikethru
-        - disable complete button when a to-do has been marked completed
+        X markAsComplete(event) function
+            X add completed class
+            X edit CSS for .complete to strikethru
+        X disable complete button when a to-do has been marked completed
     X delete button
         X onclick attribute to deleteTask()
-        - deleteTask(event) function to remove task from database
-            - delete request
-            - delete route
+        X deleteTask(event) function to remove task from database
+            X delete request
+            X delete route
     
 
     STRETCH GOALS
@@ -64,14 +64,14 @@ function renderToDos(todos) {
     for (let item of todos){
         taskList.innerHTML +=  ` 
         <tr data-testid="toDoItem" data-todoId="${item.id}" class="${item.isComplete ? 'completed' : 'not_completed'}">
-            <td>
+            <td ${item.isComplete ? 'notEditable' : 'contentEditable'}>
                 ${item.text}
-                <button data-testid="completeButton" onclick="markAsComplete(event)">Complete
-                </button>
-                <button data-testid="deleteButton" onclick="deleteToDo(event)">
-                Delete item
-                </button>
                 </td>
+                <td><button data-testid="completeButton" onclick="markAsComplete(event)" ${item.isComplete ? 'disabled' : 'allowed'}>✅
+                </button></td>
+                <td><button data-testid="deleteButton" onclick="deleteToDo(event)">
+                Delete item
+                </button></td>
         </tr>
         `
     }
@@ -83,7 +83,8 @@ function handleSubmit(event){
     let newTask = {};
     newTask.text = document.getElementById('toDoText').value;
     newTask.isComplete = false;
-    console.log(newTask)
+    console.log(newTask);
+    document.getElementById('toDoText').value = '';
 /* POST request for new to-do */
     axios({
         method: 'POST',
@@ -117,10 +118,6 @@ function markAsComplete(event) {
         console.log('PUT /todos/:id fail', error)
     })
 }
-    // PUT request to update isComplete to true
-    // X change css class to completed
-    // X strikethru text
-    // disable complete button
 
 /* Deletes selected To-Do item */
 function deleteToDo(event){
@@ -138,10 +135,10 @@ function deleteToDo(event){
     }).catch((error) => {
         console.log('DELETE /todos/:id fail', error)
     })
-    // Swal.fire({
-    //     title: "Deleted!",
-    //     text: "Your file has been deleted.",
-    //     icon: "success"
-    //   });
+    Swal.fire({
+        title: "Deleted!",
+        text: "Your file has been deleted.",
+        icon: "success"
+      });
     
 }

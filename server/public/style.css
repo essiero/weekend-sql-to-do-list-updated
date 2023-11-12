@@ -1,3 +1,64 @@
 .completed {
     text-decoration: line-through;
 }
+
+div, table {
+    background-color: blanchedalmond;
+    margin: auto;
+    text-align: center;
+    max-width: 500px;
+    min-width: 400px;
+}
+
+table, section, h2 {
+    border-left: solid 1px red;
+    padding-bottom: 25px;
+}
+
+div {
+    box-shadow: rgb(247, 204, 139) 5px 5px;
+}
+/* Hat tip to https://www.zingerbug.com/ for the marbled header background: */
+header {
+    background-color: brown;
+    box-shadow: black 5px 2px;
+        background-color:rgb(0,0,0);
+        background-image:url(http://www.zingerbugimages.com/backgrounds/deep_brown_abstract_stone_pattern_tileable.jpg);
+        background-position: top left;
+        background-repeat:repeat;
+        background-attachment:fixed;
+}
+
+hr {
+    border-bottom: 1px;
+    border-style: solid;
+    border-color: lightblue;
+}
+
+/* Cheers to https://kinsta.com/blog/css-text-outline/ for showing how to do text outline */
+h1 {
+    font-weight: bolder;
+    color: goldenrod;
+    text-align: left;
+    margin-left: 80px;
+    -webkit-text-stroke-width: 0.75px;
+    -webkit-text-stroke-color: black;
+}
+
+h2, td {
+    /* font-family: cursive; */
+}
+
+td {
+    border-bottom: solid 1px lightblue;
+}
+
+/* body {
+    box-shadow: rgb(247, 204, 139) 5px 5px;
+} */
+
+/* .vl {
+    margin-left: 30px;
+    border-left: 1px solid red;
+    height: 500px;
+  } */

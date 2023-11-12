@@ -8,17 +8,23 @@
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script defer src="./scripts/client.js"></script>
   <title>SQL TO-DO List</title>
+    <div class="vl">
+    </div>
 </head>
 <body>
+  <div>
   <header>
-    <h1>SQL TO-DO List</h1>
+    <h1>TO-DO List</h1>
   </header>
   <main>
+    <div class="vl">
+    </div>
   <section>
 <form>
   <input data-testid="toDoTextInput" placeholder="Task" type="text" id="toDoText">
   <button onclick="handleSubmit(event)" data-testid="submitButton">Add task</button>
 </form>
+<hr></hr>
   </section>
   <h2>To do:</h2>
   <table>
@@ -28,4 +34,5 @@
   
 </main>
 </body>
+</div>
 </html>
