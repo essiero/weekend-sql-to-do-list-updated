@@ -63,9 +63,9 @@ function renderToDos(todos) {
     taskList.innerHTML = '';
     for (let item of todos){
         taskList.innerHTML +=  ` 
-        <tr data-todoId="${item.id}">
+        <tr data-todoId="${item.id}" class="${item.isComplete ? 'completed' : 'not_completed'}">
         <td>${item.text}</td>
-        <td><button onclick="markComplete(event)">Complete</button></td>
+        <td><button onclick="markAsComplete(event)">Complete</button></td>
         <td><button onclick="deleteToDo(event)">Delete item</button></td>
         </tr>
         `
@@ -78,10 +78,11 @@ function handleSubmit(event){
     let newTask = {};
     newTask.text = document.getElementById('toDoText').value;
     newTask.isComplete = false;
+    console.log(newTask)
 /* POST request for new to-do */
     axios({
         method: 'POST',
-        url: '/list',
+        url: '/todos',
         data: newTask
     }).then((response) => {
         console.log('New task:', response.data);
@@ -93,12 +94,32 @@ function handleSubmit(event){
 }
 
 // markComplete(event) function here
-    // change css class to completed
-    // strikethru text
+function markAsComplete(event) {
+    event.preventDefault();
+    let clickedButton = event.target;
+    let TableRow = clickedButton.closest('tr');
+    let toDoID = TableRow.getAttribute('data-todoId');
+    console.log(toDoID);
+    TableRow.classList.add("completed");
+    console.log('Task ID', toDoID)
+
+    axios ({
+        method: 'PUT',
+        url: `todos/${toDoID}`
+    }).then((response) => {
+        getToDos();
+    }).catch((error) => {
+        console.log('PUT /todos/:id fail', error)
+    })
+}
+    // PUT request to update isComplete to true
+    // X change css class to completed
+    // X strikethru text
     // disable complete button
 
 /* Deletes selected To-Do item */
 function deleteToDo(event){
+    event.preventDefault();
     let clickedButton = event.target;
     let TableRow = clickedButton.closest('tr');
     let toDoID = TableRow.getAttribute('data-todoId');
