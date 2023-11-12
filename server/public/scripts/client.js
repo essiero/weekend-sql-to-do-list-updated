@@ -63,10 +63,15 @@ function renderToDos(todos) {
     taskList.innerHTML = '';
     for (let item of todos){
         taskList.innerHTML +=  ` 
-        <tr data-todoId="${item.id}" class="${item.isComplete ? 'completed' : 'not_completed'}">
-        <td>${item.text}</td>
-        <td><button onclick="markAsComplete(event)">Complete</button></td>
-        <td><button onclick="deleteToDo(event)">Delete item</button></td>
+        <tr data-testid="toDoItem" data-todoId="${item.id}" class="${item.isComplete ? 'completed' : 'not_completed'}">
+            <td>
+                ${item.text}
+                <button data-testid="completeButton" onclick="markAsComplete(event)">Complete
+                </button>
+                <button data-testid="deleteButton" onclick="deleteToDo(event)">
+                Delete item
+                </button>
+                </td>
         </tr>
         `
     }
@@ -133,10 +138,10 @@ function deleteToDo(event){
     }).catch((error) => {
         console.log('DELETE /todos/:id fail', error)
     })
-    Swal.fire({
-        title: "Deleted!",
-        text: "Your file has been deleted.",
-        icon: "success"
-      });
+    // Swal.fire({
+    //     title: "Deleted!",
+    //     text: "Your file has been deleted.",
+    //     icon: "success"
+    //   });
     
 }
