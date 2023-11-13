@@ -3,16 +3,19 @@
 }
 
 div, table {
-    background-color: blanchedalmond;
+    background-color: transparent;
     margin: auto;
     text-align: center;
-    max-width: 500px;
+    max-width: 480px;
     min-width: 400px;
 }
+
 
 .container {
     margin-left: 0;
     padding-bottom: 25px;
+    background-color: blanchedalmond;;
+    background-image: url(notepad.png);
 }
 
 div {
@@ -35,12 +38,6 @@ header {
         background-attachment:fixed;
 }
 
-hr {
-    border-bottom: 1px;
-    border-style: solid;
-    border-color: lightblue;
-}
-
 /* Cheers to https://kinsta.com/blog/css-text-outline/ for showing how to do text outline */
 h1 {
     font-weight: bolder;
@@ -53,9 +50,18 @@ h1 {
 }
 
 h2, td {
-    /* font-family: cursive; */
+    font-family: cursive;
 }
 
 td {
-    border-bottom: solid 1px lightblue;
+    line-height: 10px;
+
+}
+
+h2 {
+    margin: 10px;
+}
+
+table {
+    margin-left: 80px;
 }
