@@ -26,9 +26,9 @@ X form for to-dos
     
 
     STRETCH GOALS
-        - click on words to edit 
-            - might just need to add contentEditable attribute to <td> tag??
-        - style like pad of paper with lines
+        X click on words to edit 
+            X might just need to add contentEditable attribute to <td> tag??
+        X style like pad of paper with lines
         - animate erase on delete
 
 
@@ -42,6 +42,7 @@ X form for to-dos
 
 
 */
+
 console.log('JS is sourced!');
 getToDos();
 

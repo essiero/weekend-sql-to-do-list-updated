@@ -10,7 +10,6 @@ div, table {
     min-width: 400px;
 }
 
-
 .container {
     margin-left: 0;
     padding-bottom: 25px;
@@ -50,11 +49,14 @@ h1 {
 }
 
 h2, td {
-    font-family: cursive;
+    font-family: 'Cedarville Cursive', cursive;
+    font-size: larger;
 }
 
 td {
-    line-height: 10px;
+    line-height: 25px;
+    margin-top: 5px;
+    margin-bottom: 10px;
 
 }
 
