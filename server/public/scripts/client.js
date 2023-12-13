@@ -4,9 +4,9 @@ X connect server to database
     - 
 X form for to-dos
     X input fields for to-do
-        - post route
-        - post request
-            - add form input to database
+        X post route
+        X post request
+            X add form input to database
         X get route
         X get request
             X render response.data to DOM
